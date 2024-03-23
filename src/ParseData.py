@@ -23,10 +23,6 @@ def read_pageviews(CSVfile):
 
 
 
-
-
-
-
 def main():
     read_pageviews(file05)
 
