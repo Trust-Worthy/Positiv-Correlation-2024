@@ -14,12 +14,20 @@ file06 = "../datafest_csv_data/responses.csv"
 
 """
 Reads the data from the pageviews 
+
 :param 
 :return
 """
 
 def read_pageviews(CSVfile):
-    read = pd.read_csv(CSVfile, sep=',')
+
+    read = pd.read_csv(CSVfile, sep=',', )
+
+#dtype={"book": "string" , "release": "string", "chapter": "string" ,"page": "string",
+ #                                               "chapter_number": "string", "section_number": "string", "institution_id": "int"})
+
+def read_responses(CSVfile):
+    read = pd.read_csv(CSVfile, sep=',',low_memory=False)
 
 
 
@@ -28,6 +36,6 @@ def read_pageviews(CSVfile):
 
 
 def main():
-    read_pageviews(file05)
+    print(read_pageviews(file05))
 
 main()
