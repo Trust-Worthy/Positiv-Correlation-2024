@@ -30,19 +30,23 @@ class Student:
     # points_earned : list # responses.csv
     # points_possible : list # responses.csv
     # release_version : int # responses.csv
+        
+"""
+Reads the data from the pageviews 
+:param 
+:return
+"""
 
-#test01 to give
+def read_pageviews(CSVfile):
+    read = pd.read_csv(CSVfile, sep=',')
+
 def main():
+    read_pageviews(file05)
+    
     students = dict
-
-    # open_file = pd.read_csv(file01)
     chunk_size = 1
 
     for chunk in pd.read_csv(file01, chunksize=chunk_size): 
-    #for chunk in pd.read_csv(file01, 1):
         print(chunk)
-    # for line in open_file:
-        #line = open_file.readline()
-    # line = line.split()
 
 main()
