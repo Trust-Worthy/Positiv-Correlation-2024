@@ -4,13 +4,25 @@
     Parse through Data to get each individual section
 """
 
-file01 = "checkpoints_eoc.csv"
-file02 = "checkpoints_pulse.csv"
-file03 = "items.csv"
-file04 = "media_views.csv"  #Student ID
-file05 = "page_views.csv"   #Student ID needed
-file06 = "responses.csv"
+import pandas as pd
 
-#test01 to give
+
+
+file04 =  "../datafest_csv_data/media_views.csv"  #Student ID
+file05 = "../datafest_csv_data/page_views.csv"   #Student ID needed
+file06 = "../datafest_csv_data/responses.csv"
+
+"""
+Reads the data from the pageviews 
+:param 
+:return
+"""
+
+def read_pageviews(CSVfile):
+    read = pd.read_csv(CSVfile, sep=',')
+
+
 def main():
-    pass
+    read_pageviews(file05)
+
+main()
