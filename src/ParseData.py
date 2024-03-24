@@ -12,24 +12,32 @@
 import pandas as pd
 from dataclasses import dataclass
 
-eoc_checkpoint =  "../datafest_csv_data/checkpoints_eoc.csv"
 
+#FILES
+eoc_checkpoint =  "../datafest_csv_data/checkpoints_eoc.csv"
+pulse_checkpoint =  "../datafest_csv_data/checkpoints_pulse.csv"
+items = "../datafest_csv_data/items.csv"
 media_views = "../datafest_csv_data/media_views.csv"  #Student ID
 page_views = "../datafest_csv_data/page_views.csv"   #Student ID needed
 responses = "../datafest_csv_data/responses.csv"
 
+
+
 @dataclass
 class student:
-    studentID: int
+    studentID: int  #eoc checkpoint bc easiest to assign
+    engaged: []     # pageviews
+    attempt: []     #reponses
+    n_attempt:[]    #eoc checkpoint
+    time: []        #recheck which datatype it needs to be
+    # ^ dt saved and dt started needed
+
 
 
 
 StudentID = []
 
-
-
-
-
+#initial way of making a student
 def make_student(CSVfile):
     df = pd.read_csv(CSVfile,sep=',', chunksize=10)
 
@@ -70,6 +78,7 @@ def main():
 """
 This is to turn into a csv file for later 
 
+01) function 
 def writecsv(Report,filename):
     delim = ","
     writestring = report.x + delim + report.y + delim + report.lane + delim + report.time + delim + report.event
@@ -80,6 +89,10 @@ rep = Report()
 filename = "test.csv"
 writecsv(rep,filename)
 
+02) command 
+https://www.geeksforgeeks.org/convert-numpy-array-into-csv-file/
+
+03) ALT 
 
 """
 
