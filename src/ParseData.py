@@ -1,41 +1,88 @@
 """
     file: ParseData.py
     description:
-    Parse through Data to get each individual section
+    Parse through Data
+    1. will get each student ID and make an array making sure there are no duplicates
+    2. will go through other files and get the attributes needed for each student ID
+    3. will make a student in the student class and assign it all its variables
+    4. will make an array of each student
+    5. will print each of those arrays and make them into a csv file
 """
 
 import pandas as pd
+from dataclasses import dataclass
+
+eoc_checkpoint =  "../datafest_csv_data/checkpoints_eoc.csv"
+
+media_views = "../datafest_csv_data/media_views.csv"  #Student ID
+page_views = "../datafest_csv_data/page_views.csv"   #Student ID needed
+responses = "../datafest_csv_data/responses.csv"
+
+@dataclass
+class student:
+    studentID: int
 
 
 
-file04 =  "../datafest_csv_data/media_views.csv"  #Student ID
-file05 = "../datafest_csv_data/page_views.csv"   #Student ID needed
-file06 = "../datafest_csv_data/responses.csv"
+StudentID = []
 
-"""
-Reads the data from the pageviews 
 
-:param 
-:return
-"""
+
+
+
+def make_student(CSVfile):
+    df = pd.read_csv(CSVfile,sep=',', chunksize=10)
+
+    for data in df:
+        first_column = data.iloc[:, 0].str.strip(' ')  # Strip leading and trailing whitespace
+        first_column = first_column.str[1:]
+        Student = student(studentID=first_column)
+        print(Student)
+
+
+
+
 
 def read_pageviews(CSVfile):
 
     read = pd.read_csv(CSVfile, sep=',', )
+    print(read)
 
-#dtype={"book": "string" , "release": "string", "chapter": "string" ,"page": "string",
- #                                               "chapter_number": "string", "section_number": "string", "institution_id": "int"})
 
+
+"""
+will add the attempts to each student 
+"""
 def read_responses(CSVfile):
-    read = pd.read_csv(CSVfile, sep=',',low_memory=False)
+    df = pd.read_csv(CSVfile, chunksize=10)
 
-
-
-
-
+    for data in df:
+        print(data)
+        break
 
 
 def main():
-    print(read_pageviews(file05))
+   # read_pageviews(file05)
+   # read_responses(responses)
+   make_student(eoc_checkpoint)
+
+
+"""
+This is to turn into a csv file for later 
+
+def writecsv(Report,filename):
+    delim = ","
+    writestring = report.x + delim + report.y + delim + report.lane + delim + report.time + delim + report.event
+    with open(filename, "w") as file:
+        file.write(writestring)
+
+rep = Report()
+filename = "test.csv"
+writecsv(rep,filename)
+
+
+"""
+
+
 
 main()
