@@ -6,6 +6,11 @@
 from dataclasses import dataclass
 import csv
 import pandas as pd
+import seaborn as sns
+import plotly.express as px
+
+
+sns.plotting_context()
 
 file01 = "checkpoints_eoc.csv"
 file02 = "checkpoints_pulse.csv"
